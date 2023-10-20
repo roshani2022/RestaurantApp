@@ -1,7 +1,12 @@
+import React, { Fragment } from "react";
 import MealsSummary from "./MealsSummary";
+import AvilableMeals from "./AvailableMeals";
 const Meals = () => {
     return (
-      <MealsSummary></MealsSummary> 
+        <Fragment>
+         <MealsSummary/> 
+          <AvilableMeals/>
+        </Fragment>
     )
 
 }
