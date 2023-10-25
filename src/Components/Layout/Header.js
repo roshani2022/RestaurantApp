@@ -4,7 +4,7 @@ import classes from './Header.module.css'
 import HeaderCartButton from "./HeaderCartButton";
 const Header = (props) => {
   return (
-    <Fragment className="header">
+    <Fragment >
       <header className={classes.header}>
         <h1>Welcome to Food World!!!</h1>
         <HeaderCartButton onClick ={props.onShowCart}/>

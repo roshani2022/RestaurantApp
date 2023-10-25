@@ -6,6 +6,19 @@
   overflow: auto;
 }
 
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1.5px solid darkslategrey;
+  padding: 1rem 0;
+  margin: 1rem 0;
+  font-weight: bold;
+ 
+}
+.cart-item span {
+  margin-right: 10px; 
+}
 .total {
   display: flex;
   justify-content: space-between;
@@ -41,6 +54,6 @@
 }
 
 .actions .button {
-  background-color: #8a2b06;
+  background-color:darkslategrey;
   color: white;
 }
