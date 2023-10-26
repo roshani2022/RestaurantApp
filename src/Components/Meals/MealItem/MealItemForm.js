@@ -9,17 +9,13 @@ const MealItemForm = (props) => {
   
   const addItemHandler = (event) => {
     event.preventDefault();
-    //cartCtx.items.push(props.items)
-   // cartCtx.addItem(props.item)
    const quantity = document.getElementById("amount" +props.id).value;
    cartCtx.addItem({...props.item,quantity:quantity})
-    console.log("item",props.item)
     
   }
 
   return (
     <form className={classes.form}>
-      {/* {console.log('inside render',cartCtx.items)} */}
       <Input
         label="Amount"
         input={{

@@ -6,32 +6,12 @@ const CartProvider = (props) => {
 
   const addItemToCartHandler = (item) => {
 
-    /* using item*/
-    // console.log(item);
-    // const existingItem = items.find((cartItem) => cartItem.id === item.id);
-
-    // if (existingItem) {
-    //   const updatedItems = items.map((cartItem) => {
-    //     if (cartItem.id === item.id) {
-    //       return {
-    //         ...cartItem,
-    //         quantity: Number(cartItem.quantity) + Number(item.quantity),
-    //         //price: cartItem.price + item.price,
-    //       };
-    //     }
-    //     return cartItem;
-    //   });
-
-    //   setItems(updatedItems);
-    // } else {
-    //   setItems((prevItems) => [...prevItems, item]);
-    // }
-
  const existingItemIndex = items.findIndex((cartItem) => cartItem.id === item.id);
 
 if (existingItemIndex !== -1) {
   // If the item already exists, update its quantity
   const updatedItems = [...items];
+  console.log(updatedItems[existingItemIndex])
   updatedItems[existingItemIndex].quantity += 1;
   setItems(updatedItems);
 } else {
@@ -40,11 +20,35 @@ if (existingItemIndex !== -1) {
 }
 
   };
-  console.log(items)
 
-  const removeItemFromCartHandler = (id) => {
-    console.log(cartContext.items.filter((item) => item.id !== id));
-  };
+
+const removeItemFromCartHandler = (id) => {
+  // Find the index of the item with the given ID in the cart
+  const existingItemIndex = items.findIndex((cartItem) => cartItem.id === id);
+
+  if (existingItemIndex !== -1) {
+    // If the item exists in the cart, get its current quantity
+    const currentItem = items[existingItemIndex];
+    console.log(currentItem)
+
+    // If the quantity is greater than 1, decrement it by 1
+    if (currentItem.quantity > 1) {
+      const updatedItems = [...items];
+      updatedItems[existingItemIndex].quantity -= 1;
+      setItems(updatedItems);
+    } else {
+      // If the quantity is 1, remove the item from the cart
+      setItems((prevItems) => prevItems.filter((item) => item.id !== id));
+    }
+  }
+};
+
+
+
+
+
+  
+  
 
   const cartContext = {
     items: items,
@@ -60,3 +64,5 @@ if (existingItemIndex !== -1) {
 };
 
 export default CartProvider;
+
+ 
