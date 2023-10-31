@@ -12,7 +12,12 @@ const Cart = (props) => {
     totalAmount += item.price * item.quantity;
   });
   const hasItem = crtContext.items.length > 0;
-  const cartItemAddHandler = () => {}
+  const cartItemAddHandler = (item) => {
+    crtContext.addItem({
+      ...item,
+      quantity:item.quantity+1
+    })
+  }
 
   const cartItemRemoveHandler  = (id) => {
     crtContext.removeItem(id)
@@ -31,7 +36,7 @@ const Cart = (props) => {
           quantity={item.quantity}
           onRemove={()=>cartItemRemoveHandler(item.id)}
             
-          onAdd = {cartItemAddHandler}
+          onAdd = {()=>cartItemAddHandler(item)}
         />
         
       ))}
@@ -46,7 +51,7 @@ const Cart = (props) => {
       {cartItems}
       <div className={classes.total}>
         <span> Total Amount</span>
-        <span>{totalAmount.toFixed(2)}</span>
+        <span>${totalAmount.toFixed(2)}</span>
       </div>
 
       <div className={classes.actions}>
